@@ -1,0 +1,15 @@
+﻿<header *ngIf="showHeader" class="app-header">
+  <div class="app-header__inner">
+    <a class="app-title" routerLink="/patients">Hastane Yönetim Sistemi</a>
+
+    <div class="app-actions">
+      <button *ngIf="isAuthenticated" type="button" class="btn-logout" (click)="onLogout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="app-main">
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,29 @@
+﻿import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Patient, PatientDetail, CreatePatientRequest } from '../models/patient.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PatientService {
+  private apiUrl = 'http://localhost:5149/api/patients';
+
+  constructor(private http: HttpClient) {}
+
+  getAll(): Observable<Patient[]> {
+    return this.http.get<Patient[]>(this.apiUrl);
+  }
+
+  getById(id: number): Observable<PatientDetail> {
+    return this.http.get<PatientDetail>(`${this.apiUrl}/${id}`);
+  }
+
+  create(request: CreatePatientRequest): Observable<Patient> {
+    return this.http.post<Patient>(this.apiUrl, request);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+}

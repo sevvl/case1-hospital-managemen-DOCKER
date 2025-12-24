@@ -1,0 +1,186 @@
+﻿.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  color: #333;
+}
+
+.btn-back {
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  background-color: #5a6268;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.detail-card {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.section {
+  padding: 25px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.info-item {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.info-item label {
+  display: block;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.info-item p {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.prediction-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background-color: #e8f4f8;
+  border-radius: 5px;
+  border-left: 4px solid #17a2b8;
+}
+
+.prediction-item {
+  padding: 15px;
+  background: white;
+  border-radius: 5px;
+}
+
+.prediction-item label {
+  display: block;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.prediction-value {
+  margin: 0;
+  color: #17a2b8;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.record-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.record-header {
+  background-color: #f8f9fa;
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.date {
+  color: #666;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.record-content {
+  padding: 15px;
+  background: white;
+}
+
+.record-field {
+  margin-bottom: 15px;
+}
+
+.record-field:last-child {
+  margin-bottom: 0;
+}
+
+.record-field label {
+  display: block;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.record-field p {
+  margin: 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.empty {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}

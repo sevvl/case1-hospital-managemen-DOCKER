@@ -1,0 +1,46 @@
+﻿<div class="container">
+  <div class="header">
+    <h1>Hastalar</h1>
+    <button class="btn btn-success" (click)="createNew()">+ Yeni Hasta</button>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    Yükleniyor...
+  </div>
+
+  <div *ngIf="!loading && patients.length > 0" class="patients-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Ad</th>
+          <th>Soyadı</th>
+          <th>Doğum Tarihi</th>
+          <th>İşlem</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{ patient.name }}</td>
+          <td>{{ patient.surname }}</td>
+          <td>{{ patient.birthDate | date: 'dd.MM.yyyy' }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="viewDetails(patient.id)">
+              Detay
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deletePatient(patient.id)">
+              Sil
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && patients.length === 0" class="empty-state">
+    <p>Hasta kaydı bulunamadı.</p>
+  </div>
+</div>
