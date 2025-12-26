@@ -1,20 +1,22 @@
 # AI-Supported Patient Tracking Platform (Lite)
 
 A simple patient tracking application developed as a short case study.  
-The project demonstrates a basic full-stack setup using Angular and .NET 8 Web API with JWT authentication.
+This project demonstrates a basic full-stack architecture using **Angular** and **.NET 8 Web API**, secured with **JWT authentication** and **Dockerized backend infrastructure**.
 
 ---
 
 ## Tech Stack
 
-**Backend**
+### Backend
 - .NET 8 (ASP.NET Core Web API)
 - Entity Framework Core
 - PostgreSQL
 - JWT Authentication
-- Swagger
+- Swagger (OpenAPI)
+- Docker
+- Docker Compose
 
-**Frontend**
+### Frontend
 - Angular 18
 - TypeScript
 - Reactive Forms
@@ -25,10 +27,10 @@ The project demonstrates a basic full-stack setup using Angular and .NET 8 Web A
 
 ## Features
 
-- JWT-based login and route protection
+- JWT-based authentication and route protection
 - Patient list and patient detail views
 - Create and delete patient records
-- Medical history display (sample data)
+- Medical history display (sample seeded data)
 - Mock AI prediction result returned from backend
 - Logout functionality
 
@@ -36,21 +38,38 @@ The project demonstrates a basic full-stack setup using Angular and .NET 8 Web A
 
 ## Project Structure
 
-- Backend: Controllers, Services, EF Core, seeded sample data
-- Frontend: Feature-based Angular structure with guards and interceptors
+- **Backend**  
+  ASP.NET Core Web API with layered architecture (Controllers, Services, EF Core)  
+  Fully dockerized with PostgreSQL via Docker Compose
+
+- **Frontend**  
+  Angular application with feature-based structure, route guards, and HTTP interceptors
 
 ---
 
 ## Running the Project
 
-### Backend
-```bash
-dotnet run
-Backend `https://localhost:5001` 
-Swagger UI: `https://localhost:5001/swagger`
-http://localhost:5149/swagger
+The backend API and PostgreSQL database are orchestrated using **Docker Compose**.  
+The Angular frontend runs separately on the host machine.
+
+---
+
+## Prerequisites
+
+Make sure the following tools are installed:
+
+- **Docker Desktop**
+- **Node.js & npm**
+- **Angular CLI**
+  ```bash
+  npm install -g @angular/cli
+
+docker compose up --build -d*   The API will be accessible at **`http://localhost:5150`**.
+*   Swagger UI will be available at **`http://localhost:5150/swagger`**.
 npm install
-npm start
+ng serve*   The Angular application will be accessible at **`http://localhost:4200`**.
+
+
 Frontend `http://localhost:4200` 
 {
   "username": "doctor1",
@@ -59,4 +78,6 @@ Frontend `http://localhost:4200`
   "dateOfBirth": "1980-06-15",
   "password": "password123"
 }
-** ASLINUR ŞEVVAL SEZGİN : " İNCELEDİĞİNİZ İÇİN TEŞEKKÜR EDERİM " :=) ** 
+— Aslınur Şevval Sezgin  
+Thank you for reviewing this project.
+ :=) 

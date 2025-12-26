@@ -1,14 +1,30 @@
-# Visual Studio
-.vs/
-
-# Node / Angular
-node_modules/
-.angular/cache/
-
-# Build outputs
+# ======================
+# .NET
+# ======================
 bin/
 obj/
+*.user
+*.suo
+*.pdb
+*.dll
+*.exe
 
+# ======================
+# Angular / Node
+# ======================
+node_modules/
+.angular/
+dist/
+npm-debug.log*
+yarn-error.log*
+
+# ======================
+# Environment
+# ======================
+.env
+
+# ======================
 # OS
+# ======================
 .DS_Store
 Thumbs.db

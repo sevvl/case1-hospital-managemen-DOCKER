@@ -1,0 +1,53 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: PatientTrackerDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432" # Host portu 5433, container portu 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  migrations:
+    build:
+      context: .
+      dockerfile: case1/Dockerfile
+      target: migrations # Dockerfile'daki migrations aşamasını kullan
+    depends_on:
+      postgres:
+        condition: service_healthy # PostgreSQL'in sağlıklı olmasını bekle
+    environment:
+      # Migrations'ın postgres servisine bağlanması için bağlantı dizesi
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=PatientTrackerDB;Username=postgres;Password=postgres"
+    # command satırını aşağıdaki gibi güncelliyoruz:
+    command: /root/.dotnet/tools/dotnet-ef database update --project case1.csproj
+    # Migrations container'ı migration'ları çalıştırdıktan sonra çıkmalıdır.
+    # Sürekli çalışmasına gerek yoktur, bu yüzden yeniden başlatmıyoruz.
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: case1/Dockerfile
+      target: final # Dockerfile'daki final aşamasını kullan
+    ports:
+      - "5150:8080" # Host portu 5150, container portu 8080. Swagger http://localhost:5150/swagger adresinden erişilebilir olacak.
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+      # Bağlantı dizesi appsettings.Docker.json tarafından sağlanacaktır
+      # Host 'postgres' (servis adı) olacaktır
+    depends_on:
+      migrations:
+        condition: service_completed_successfully # API başlamadan önce migration'ların başarıyla çalışmasını sağla
+    restart: always
+
+volumes:
+  pgdata:
