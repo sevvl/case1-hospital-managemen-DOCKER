@@ -64,10 +64,18 @@ Make sure the following tools are installed:
   ```bash
   npm install -g @angular/cli
 
+
 docker compose up --build -d*   The API will be accessible at **`http://localhost:5150`**.
 *   Swagger UI will be available at **`http://localhost:5150/swagger`**.
 npm install
 ng serve*   The Angular application will be accessible at **`http://localhost:4200`**.
+
+## Testing
+
+Basic unit tests are included for the AI Prediction controller.
+
+```bash
+dotnet test
 
 
 Frontend `http://localhost:4200` 
